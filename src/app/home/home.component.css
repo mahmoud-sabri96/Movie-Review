@@ -1,0 +1,27 @@
+.brd {
+    height: 1px;
+    background-color: #444;
+}
+
+.movie_box {
+    transition: .3s;
+    cursor: pointer;
+    background-color: #01292999;
+    border: 10px solid #131722;
+}
+
+.movie_box span.vote {
+    z-index: 2;
+    background-color: #036565;
+}
+
+.movie_box img {
+    transition: .3s;
+    opacity: .8;
+}
+
+.movie_box:hover img {
+    transform: scale(1.09);
+    opacity: 1
+}
+

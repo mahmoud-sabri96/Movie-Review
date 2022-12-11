@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row py-5">
+
+        <div class="col-md-5">
+            <div>
+                <img [src]="imgBasePath+mediaDetail.poster_path" [alt]="mediaDetail.title || mediaDetail.name"
+                    class="img-fluid rounded-4">
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div>
+                <h3 class="">{{mediaDetail.title || mediaDetail.name}}</h3>
+                <p class="h5 text-muted">{{mediaDetail.tagline}}</p>
+                <div class="my-5 ">
+                    <span *ngFor="let cat of mediaDetail.genres"
+                        class="gener p-2 me-2 fw-bold rounded-2">{{cat.name}}</span>
+                </div>
+
+                <p class="h5 mb-3"> language:
+                    <span class="bg-warning p-1 rounded-2 text-dark"> {{mediaDetail.original_language}}.</span>
+                </p>
+                <p class="h5 mb-3"> Vote_Average: <span class="text-muted"> {{mediaDetail.vote_average}}.</span></p>
+                <p class="h5  mb-3">Vote_Count: <span class="text-muted"> {{mediaDetail.vote_count}}</span></p>
+                <p class="h5  mb-3">Popularity: <span class="text-muted"> {{mediaDetail.popularity && +mediaDetail.popularity }}</span></p>
+                <p class="h5  mb-3">Release_Date: <span class="text-muted"> {{mediaDetail.release_date || mediaDetail.last_air_date}}.</span></p>
+                <p class="h5  mb-3">Overview: <br><span class="text-muted"> {{mediaDetail.overview}}.</span></p>
+                <button class="btn btn-outline-info mt-lg-5"><a [href]="mediaDetail.homepage" target="_blank" class="text-white text-decoration-none ">Watch Now</a></button>
+            </div>
+        </div>
+    </div>
+</div>

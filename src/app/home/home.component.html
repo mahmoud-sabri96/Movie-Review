@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="search d-flex align-items-center justify-content-around mt-4 w-75 mx-auto">
+        <i class="fa-solid fa-magnifying-glass me-2 p-3 fa-2x"></i>
+        <input [(ngModel)]="searchTerm"  class="form-control" placeholder="Search Trending This Week" type="search" />
+    </div>
+
+
+
+
+    <!-- Trending Movies Section -->
+    <div  class="row py-5 justify-content-between">
+
+        <div class="col-md-3 fixed-left d-flex align-items-center">
+            <div>
+                <div class="brd w-25 my-2"></div>
+                <h3>Trending<br> Movies<br>To Watch Now</h3>
+                <p class="text-muted">Most Watched Movies By Days.</p>
+                <div class="brd w-100 my-2"></div>
+            </div>
+        </div>
+
+        
+        <!-- routerLink="/moviedetails"  ==> put / before moviedetails to handle path after domain -->
+        <div  [routerLink]="['/moviedetails','movie',movie.id]" *ngFor="let movie of movies | search:searchTerm"
+            class="col-md-3 my-1 movie_box text-center rounded-4 mb-4" >
+            <div class="box position-relative ">
+                <span
+                    class="vote position-absolute top-0 end-0 fw-bold p-1 rounded-2">{{movie.vote_average.toFixed(2)}}</span>
+                <div class="overflow-hidden rounded-2">
+                    <img [src]="imgBasePath+movie.poster_path" [alt]="movie.title" class="img-fluid ">
+                </div>
+                <div class="p-2">
+                    <h3 class="h5 fw-bold">{{movie.title | titlecase}}</h3>
+                    <p class="text-center text-white-50">{{movie.overview | slicewords:10}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Trending Tvs Section -->
+    <div class="row py-5 justify-content-between">
+        <div class="col-md-3 d-flex align-items-center">
+            <div>
+                <div class="brd w-25 my-2"></div>
+                <h3>Trending<br> Tvs<br>To Watch Now</h3>
+                <p class="text-muted">Most Watched Tvs By Days.</p>
+                <div class="brd w-100 my-2"></div>
+            </div>
+        </div>
+
+        <div [routerLink]="['/moviedetails','tv',tv.id]" *ngFor="let tv of tvs  | search : searchTerm "
+            class="col-md-3 my-1 movie_box rounded-4 mb-4">
+            <div class="box position-relative">
+                <span
+                    class="vote position-absolute top-0 end-0 fw-bold p-1 rounded-2">{{tv.vote_average.toFixed(2)}}</span>
+                <div class="overflow-hidden rounded-2">
+                    <img [src]="imgBasePath+tv.poster_path" [alt]="tv.title? tv.title : tv.name" class="img-fluid">
+                </div>
+                <div class="p-2">
+                    <h3 class="h5 text-center fw-bold">{{tv.title||tv.name | titlecase }}</h3>
+                    <p class="text-center text-white-50">{{tv.overview | slicewords:9}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,10 @@
+label {
+    transform: translateY(-5px);
+    transition: .4s;
+    position: absolute;
+    z-index: -1;
+}
+
+.showLabel {
+    transform: translateY(-25px);
+}

@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html {
+    --bg-color: #131722;
+    --lightBgColor: #24baef;
+    --bgTransparent: rgba(36, 186, 239, .6);
+    --borderColor: #a8a8a83d;
+    --fontColor: #fff;
+    --borderHeight: 1px;
+    --secondFontColor: #949cb0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--fontColor);
+    caret-color: #056183;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

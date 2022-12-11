@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand navbarBrand" routerLink="home">MY Movie</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav text-center m-auto mb-2 mb-lg-0">
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="home">Home</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="Movies">Movies</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="tv">TVShow</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="people">People</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-center my-2 my-lg-0">
+                <a target="_blank" href="https://getbootstrap.com/docs/5.2/components/navbar/">
+                    <i class="fa-brands fa-facebook text-white px-2"></i>
+                </a>
+                <i class="fa-brands fa-twitter text-white px-2"></i>
+                <i class="fa-brands fa-instagram text-white px-2"></i>
+                <a *ngIf="!isLogin" class="nav-link text-white px-2" routerLink="login">Login </a>
+                <a *ngIf="!isLogin" class="nav-link text-white px-2" routerLink="register">Register</a>
+                <a *ngIf="isLogin" onclick="logoutHandler()"  id="logout" class="nav-link text-white px-2"
+                    routerLink="login">
+                    Logout <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>

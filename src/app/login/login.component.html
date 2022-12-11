@@ -1,0 +1,41 @@
+<h2 class="text-info text-center my-4"> Login Form</h2>
+
+<div *ngIf="loginErrorMsg" class="alert alert-danger">
+    {{loginErrorMsg}}
+</div>
+
+<div class="loginForm w-75 mx-auto my-5">
+    <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit(loginForm)">
+
+        <!-- For email Input -->
+        <div id="emailField" class="mb-4">
+            <label for="email" class="text-info">Email</label>
+            <input #email (keyup)="showLabel(email)" formControlName="email" id="email" type="email"
+                placeholder="Enter Your Email" class="form-control">
+
+            <!-- errors in password field with conditions error and touched -->
+            <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                <p *ngIf="loginForm.getError('required','email')" class="text-danger fw-bold">* Required </p>
+                <p *ngIf="loginForm.getError('email','email')" class="text-danger fw-bold">* Please Enter Valid Email
+                </p>
+            </div>
+        </div>
+
+        <!-- For password Input -->
+        <div id="passwordField" class="mb-4">
+            <label for="password" class="text-info">Password</label>
+            <input #password (keyup)="showLabel(password)" formControlName="password" id="password"
+                placeholder="Enter Your Password" type="password" class="form-control">
+            <!-- errors in password field with conditions error and touched -->
+            <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                <p *ngIf="loginForm.getError('required','password')" class="text-danger fw-bold">* Required </p>
+                <p *ngIf="loginForm.getError('pattern','password')" class="text-danger fw-bold">* Please Enter Valid
+                    Password </p>
+            </div>
+        </div>
+
+        <button [disabled]="loginForm.invalid" class="btn btn-outline-info text-center my-3">Login</button>
+        <p class="py-2 text-center">Don't have Account ? <a routerLink="/register" class="text-white">Register</a> </p>
+
+    </form>
+</div>

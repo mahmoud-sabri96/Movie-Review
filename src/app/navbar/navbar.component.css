@@ -1,0 +1,40 @@
+.navbarBrand {
+    font-weight: bold;
+    font-size: 30px;
+    color:aqua ;
+}
+
+nav {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #a8a8a83d;
+}
+
+.active {
+    font-weight: bold !important;
+    letter-spacing: 1px;
+    background-color: rgba(3, 94, 94, 0.507) !important;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    color: aqua !important;
+}
+
+#logout {
+    cursor: pointer;
+}
+
+#logout i {
+    transition: 0.5s;
+}
+
+#logout:hover i {
+    margin-left: 5px;
+}
+
+.fa-facebook,
+.fa-twitter,
+.fa-instagram {
+    cursor: pointer;
+}

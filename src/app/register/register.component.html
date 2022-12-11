@@ -1,0 +1,97 @@
+<h2 class="text-center text-info py-4">Register Form</h2>
+
+<!-- error massege of register which come from response -->
+<div *ngIf="registerErorrMsg" class="alert alert-danger fw-bold">*{{registerErorrMsg}}</div>
+<div *ngIf="registerSuccessMsg" class="alert alert-success fw-bold">*{{registerSuccessMsg}}</div>
+
+<div class="w-75 my-4 mx-auto">
+    <form [formGroup]="registerForm" (ngSubmit)="submitFormHandler(registerForm)">
+
+        <!-- For First_name Input -->
+        <div class="mb-4">
+            <label for="first_name" class="text-info">First-Name</label>
+            <input #Fname (keyup)="showLabel(Fname)" formControlName="first_name" id="first_name" class="form-control"
+                placeholder="First-Name" />
+
+            <!-- errors in first_name field with conditions error and touched -->
+            <div class="d-flex flex-column"
+                *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched">
+                <span *ngIf="registerForm.get('first_name')?.getError('required')" class="text-danger fw-bold py-1">
+                    * Required
+                </span>
+                <span *ngIf="registerForm.get('first_name')?.getError('minlength')" class="text-danger fw-bold py-1">
+                    *Min Length 3
+                </span>
+                <span *ngIf="registerForm.get('first_name')?.getError('maxlength')" class="text-danger fw-bold py-1">
+                    *Max Length 10
+                </span>
+            </div>
+        </div>
+
+        <!-- For last_name Input -->
+        <div class="mb-4">
+            <label for="last_name" class="text-info">Last_Name</label>
+            <input #Lname (keyup)="showLabel(Lname)" formControlName="last_name" id='last_name' class="form-control"
+                placeholder="Last-Name" />
+            <!-- errors in last_name field with conditions error and touched -->
+            <div *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched">
+                <p *ngIf="registerForm.get('last_name')?.getError('required')" class="text-danger py-1 fw-bold">*
+                    Required</p>
+                <p *ngIf="registerForm.getError('minlength','last_name')" class="text-danger py-1 fw-bold">* Min
+                    Length 3</p>
+                <p *ngIf="registerForm.hasError('maxlength', 'last_name')" class="text-danger py-1 fw-bold">* Max
+                    Length 10</p>
+            </div>
+        </div>
+
+        <!-- For Age Input -->
+        <div class="mb-4">
+            <label for="age" class="text-info">Age</label>
+            <input #age type="number" (keyup)="showLabel(age)" formControlName="age" id='age' class="form-control"
+                placeholder="Age-Name" />
+            <!-- errors in age field with conditions error and touched -->
+            <div *ngIf="registerForm.get('age')?.errors && registerForm.get('age')?.touched">
+                <p *ngIf="registerForm.get('age')?.getError('required')" class="text-danger py-1 fw-bold">*
+                    Required</p>
+                <p *ngIf="registerForm.getError('min','age')" class="text-danger py-1 fw-bold">* Min
+                    20 years old</p>
+                <p *ngIf="registerForm.hasError('max', 'age')" class="text-danger py-1 fw-bold">* Max
+                    60 years old</p>
+            </div>
+        </div>
+
+        <!-- For email Input -->
+        <div class="mb-4">
+            <label for="email" class="text-info">Email</label>
+            <input #email (keyup)="showLabel(email)" formControlName="email" id='email' class="form-control"
+                placeholder="Email" />
+            <!-- errors in email field with conditions error and touched -->
+            <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+                <p *ngIf="registerForm.get('email')?.getError('required')" class="text-danger py-1 fw-bold">*
+                    Required</p>
+                <p *ngIf="registerForm.getError('email','email')" class="text-danger py-1 fw-bold">* Your Email not
+                    valid</p>
+
+            </div>
+        </div>
+
+        <!-- For password Input -->
+        <div class="mb-4">
+            <label for="password" class="text-info">Password</label>
+            <input #password (keyup)="showLabel(password)" formControlName="password" id='password' class="form-control"
+                placeholder="Password" />
+            <!-- errors in password field with conditions error and touched -->
+            <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+                <p *ngIf="registerForm.get('password')?.getError('required')" class="text-danger py-1 fw-bold">*
+                    Required</p>
+                <p *ngIf="registerForm.getError('pattern','password')" class="text-danger py-1 fw-bold">* your password
+                    should start with A-Z <br />* min two digit 0-9 </p>
+            </div>
+        </div>
+
+        <button [disabled]="registerForm.invalid" class="btn btn-outline-info my-4 d-block mx-auto">Register</button>
+        <p class="py-2 text-center">have Account ? <a routerLink="/login" class="text-white">login</a> </p>
+
+    </form>
+
+</div>
