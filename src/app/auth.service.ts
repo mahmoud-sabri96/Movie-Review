@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
-
+ 
   userDataDecode: any = new BehaviorSubject(null);
 
   constructor(private _HttpClient: HttpClient, private _Router: Router) {
@@ -27,13 +27,21 @@ export class AuthService {
   }
 
   // to handle register request
+  // sendRegisterForm(registerFormData: object): Observable<any> {
+  //   return this._HttpClient.post("https://route-egypt-api.herokuapp.com/signup", registerFormData)
+  // }
+  // to handle register request
   sendRegisterForm(registerFormData: object): Observable<any> {
-    return this._HttpClient.post("https://route-egypt-api.herokuapp.com/signup", registerFormData)
+    return this._HttpClient.post("https://sticky-note-fe.vercel.app/signup", registerFormData)
   }
 
   // to handle login request
+  // sendLoginForm(loginFormData: object): Observable<any> {
+  //   return this._HttpClient.post("https://route-egypt-api.herokuapp.com/signin", loginFormData);
+  // }
+  // to handle login request
   sendLoginForm(loginFormData: object): Observable<any> {
-    return this._HttpClient.post("https://route-egypt-api.herokuapp.com/signin", loginFormData);
+    return this._HttpClient.post("https://sticky-note-fe.vercel.app/signin", loginFormData);
   }
 
   // to handle decode user data
